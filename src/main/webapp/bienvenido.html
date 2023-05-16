@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<script src="script/Personas.js"></script>
+<title>Insert title here</title>
+
+</head>
+<body>
+
+	<h1>Bienvenido</h1>
+	<br>
+	
+	<p>
+		Id de usuario: <span id="id"></span>
+	</p>
+	<p>
+		Nombre: <span id="nombre"></span>
+	</p>
+	<p>
+		Apellidos: <span id="apellidos"></span>
+	</p>
+	<p>
+		Edad: <span id="edad"></span>
+	</p>
+
+<button>
+		<a href="index.html">Ir a Formulario</a>
+	</button>
+	<button><a href="listapersonas.html">Ir a listapersonas</a></button>
+	<script>
+		// Recuperar los datos del almacenamiento local
+	for (var i = 1; i <= localStorage.length; i++) {
+			var key = localStorage.key(i);
+			if (key.startsWith("personaId_")) {
+				var id = key.replace("personaId_", "");
+				var dni = localStorage.getItem("personaDni_" + id);
+				var nombre = localStorage.getItem("personaNombre_" + id);
+				var apellidos = localStorage.getItem("personaApellidos_" + id);
+				var edad = parseInt(localStorage.getItem("personaEdad_" + id));
+			
+		// Mostrar los datos en la página
+		document.getElementById("id").textContent = edad;
+		document.getElementById("nombre").textContent = nombre;
+		document.getElementById("apellidos").textContent = apellidos;
+		document.getElementById("edad").textContent = edad;
+		document.getElementById("dni").textContent = edad;
+			}
+	}
+	</script>
+</body>
+</html>

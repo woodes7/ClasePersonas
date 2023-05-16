@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<script src="script/Personas.js"></script>
+<link href="css/ClasePersonas.css" rel="stylesheet">
+<title>Lista Personas</title>
+</head>
+<body>
+	<h1>Datos de Personas</h1>
+	<table id="tabla-personas">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>DNI</th>
+				<th>Nombre</th>
+				<th>Apellidos</th>
+				<th>Edad</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	<button>
+		<a href="index.html">Ir a Formulario</a>
+	</button>
+
+	<script>
+		// Recuperar los datos del almacenamiento local
+		var tablaPersonas = document.getElementById("tabla-personas");
+		var tbody = tablaPersonas.getElementsByTagName("tbody")[0];
+
+				// Iterar sobre las personas guardadas en el localStorage y agregar cada persona a la tabla
+		for (var i = 0; i < localStorage.length; i++) {
+		  var key = localStorage.key(i);
+		  if (key.startsWith("personaId_")) {
+		    var id = key.replace("personaId_", "");
+		    var dni = localStorage.getItem("personaDni_" + id);
+		    var nombre = localStorage.getItem("personaNombre_" + id);
+		    var apellidos = localStorage.getItem("personaApellidos_" + id);
+		    var edad = parseInt(localStorage.getItem("personaEdad_" + id));
+		
+	
+				var fila = document.createElement("tr");
+
+				var celdaId = document.createElement("td");
+				celdaId.textContent = id;
+
+				var celdaDNI = document.createElement("td");
+				celdaDNI.textContent = dni;
+
+				var celdaNombre = document.createElement("td");
+				celdaNombre.textContent = nombre;
+
+				var celdaApellidos = document.createElement("td");
+				celdaApellidos.textContent = apellidos;
+
+				var celdaEdad = document.createElement("td");
+				celdaEdad.textContent = edad;
+
+				fila.appendChild(celdaId);
+				fila.appendChild(celdaDNI);
+				fila.appendChild(celdaNombre);
+				fila.appendChild(celdaApellidos);
+				fila.appendChild(celdaEdad);
+
+				tbody.appendChild(fila);
+			}
+		}
+	</script>
+
+</body>
+</html>
